@@ -9,6 +9,7 @@ gsap.registerPlugin(ScrollTrigger);
 let locoScroll: any;
 
 export default class ScrollManager extends EventDispatcher {
+  private static CUSTOM_SCROLL: boolean = true;
   private wrapperElement: HTMLElement | null = null;
   constructor() {
     super();
@@ -16,6 +17,8 @@ export default class ScrollManager extends EventDispatcher {
 
   public init(wrapperElement: HTMLElement): void {
     this.wrapperElement = wrapperElement;
+
+    if (!ScrollManager.CUSTOM_SCROLL) return;
 
     locoScroll = new LocomotiveScroll({
       el: wrapperElement,

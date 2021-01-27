@@ -2,7 +2,10 @@
 <script src="./HomePage.js"></script>
 
 <template>
-  <div :class="[$style.homePage]">
+  <div
+    :class="[$style.homePage]"
+    data-scroll-container
+  >
     <div :class="$style.temp" />
     <div :class="$style.temp">
       <div ref="example" :class="$style.example" />
