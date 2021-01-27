@@ -11,6 +11,9 @@ export default {
   name: 'HomePage',
   extends: AbstractPageTransitionComponent,
   mounted() {
+    this.scroll = new ScrollManager();
+    this.scroll.init(this.$el);
+
     const timeline = gsap.timeline({ paused: true });
     timeline.to(this.$refs.example, {
       rotation: 90,
@@ -24,8 +27,7 @@ export default {
       markers: true,
     });
 
-    this.scroll = new ScrollManager();
-    this.scroll.init(this.$el);
+    ScrollTrigger.update();
   },
   beforeDestroy() {
     this.trigger.kill();

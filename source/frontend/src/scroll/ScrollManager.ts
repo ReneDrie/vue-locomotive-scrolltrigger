@@ -27,10 +27,10 @@ export default class ScrollManager extends EventDispatcher {
 
     locoScroll.on('scroll', ScrollTrigger.update);
 
-    ScrollTrigger.scrollerProxy(wrapperElement, {
+    ScrollTrigger.scrollerProxy(document.body, {
       scrollTop(value) {
         return arguments.length
-          ? locoScroll.scrollTo(value, 0, 0)
+          ? locoScroll.setScroll(0, value)
           : locoScroll.scroll.instance.scroll.y;
       },
       getBoundingClientRect() {
@@ -41,7 +41,6 @@ export default class ScrollManager extends EventDispatcher {
           height: window.innerHeight,
         };
       },
-
       pinType: wrapperElement.style.transform ? 'transform' : 'fixed',
     });
 
